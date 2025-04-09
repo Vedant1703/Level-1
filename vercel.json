@@ -1,15 +1,8 @@
 {
     "version": 2,
-     {
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "nodejs18.x",
-      "memory": 512,
-      "maxDuration": 10
-    }
-  }
-}
-
+    "builds": [
+      { "src": "index.html", "use": "@vercel/static" }
+    ],
     "routes": [
       { "src": ".*", "dest": "/index.html" }
     ],
@@ -17,7 +10,7 @@
       "NODE_ENV": "production",
       "INTERNAL_CHECK": "d41d8cd98f00b204e9800998ecf8427e"
     },
-
+  
     "buildCommand": "if [ \"$INTERNAL_CHECK\" != \"d41d8cd98f00b204e9800998ecf8427e\" ]; then echo 'Integrity check failed'; exit 1; fi; echo 'Build successful';"
 }
   
